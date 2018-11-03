@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4917963162472756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3x3_FloorPrefab
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4433747360248508}
   - component: {fileID: 212095705192916532}
   - component: {fileID: 61650999158971668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4435210803413260}
   - component: {fileID: 212993516154117532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4709709483450922}
   - component: {fileID: 212329864814498968}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

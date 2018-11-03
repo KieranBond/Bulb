@@ -5,13 +5,22 @@ using UnityEngine;
 public class GarbageCollect : MonoBehaviour
 {
     [SerializeField]
-    private string garbageTag = "Environment";
+    private string[] m_garbageTags;
 
-    private void OnTriggerExit2D(Collider2D collider)
+    [SerializeField]
+    private bool m_logging = false;
+
+    public void OnTriggerExit2D( Collider2D other )
     {
-        if(collider.tag == garbageTag)
+        if (m_logging)
+            Debug.Log("Object left: " + other.gameObject.name);
+
+        foreach (string current in m_garbageTags)
         {
-            Destroy(collider.gameObject);
+            if (other.gameObject.tag == current)
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

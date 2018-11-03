@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4501884821050446}
   - component: {fileID: 212366738099914096}
   - component: {fileID: 61988313808586578}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4359542265171028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3x2_FloorPrefab
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211311999024730}
   - component: {fileID: 212754196739421504}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
