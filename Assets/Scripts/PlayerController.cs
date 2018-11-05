@@ -52,20 +52,7 @@ public class PlayerController : MonoBehaviour
             m_rb.AddForce(Vector2.left * m_movementSpeed);
         }
 
-        //Colour shifter
-        if(Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            m_spriteRender.color = m_colorChoices[m_colorIndex];
-            IncrementColorIndex();
-        }
-    }
 
-    private void IncrementColorIndex()
-    {
-        m_colorIndex++;
-
-        if (m_colorIndex >= m_colorChoices.Length)
-            m_colorIndex = 0;
     }
 
     private void OnCollisionEnter2D( Collision2D collision )
