@@ -3,32 +3,42 @@
 public class ColourFlipper : MonoBehaviour
 {
     [SerializeField]
-    private Material[] m_changeableMaterials;
+    private Material m_setMaterial;
 
-
-    private Color[] m_materialColors;
+    [SerializeField]
+    private Color[] m_changeableColours;
 
     private int m_colorIndex = 0;
 
-    private Material m_setMaterial;
+
     // Use this for initialization
     void Start()
     {
-        m_setMaterial = new Material(m_changeableMaterials[0]);
-        m_materialColors = new Color[m_changeableMaterials.Length];
+        m_setMaterial.color = m_changeableColours[0];
+    }
 
-        int n = 0;
-        foreach(Material current in m_changeableMaterials)
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftControl))
         {
-            m_materialColors[n] = current.color;
+            UpdateColor();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateColor()
     {
+        //TODO : Lerp color?
 
+        //Change the color and update our index.
+        m_setMaterial.color = m_changeableColours[m_colorIndex];
+        IncrementIndex();
     }
 
+    private void IncrementIndex()
+    {
+        m_colorIndex++;
 
+        if (m_colorIndex >= m_changeableColours.Length)
+            m_colorIndex = 0;
+    }
 }

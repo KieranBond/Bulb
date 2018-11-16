@@ -36,9 +36,11 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        //TODO : Add animations
         if(Input.GetKeyDown(KeyCode.Space) && m_isLanded)
         {
             m_isLanded = false;
+            
             //Jump!
             m_rb.AddForce(Vector2.up * m_jumpForce);
         }

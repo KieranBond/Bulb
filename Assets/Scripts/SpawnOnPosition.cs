@@ -30,23 +30,6 @@ public class SpawnOnPosition : MonoBehaviour
             BeginSpawnSession();
     }
 
-    private void OnGUI()
-    {
-        if(GUI.Button(new Rect(0, 0, 100, 100), "Spawn"))
-        {
-            Spawn();
-        }
-        else if(GUI.Button(new Rect(110, 0, 100, 100), "SpawnSession"))
-        {
-            BeginSpawnSession();
-        }
-        else if (GUI.Button(new Rect(220, 0, 100, 100), "StopSession"))
-        {
-            if (m_spawnSessionRoutine != null)
-                StopCoroutine(m_spawnSessionRoutine);
-        }
-    }
-
     public GameObject Spawn()
     {
         Transform parent = m_spawnParent != null ? m_spawnParent : this.transform;
