@@ -13,6 +13,11 @@ public class Obstacle : MonoBehaviour
         SetInstancedMaterial();
     }
 
+    public Color GetInformedColor()
+    {
+        return m_myDefinedColor;
+    }
+
     public void InformColour(Color a_myDefinedColor)
     {
         m_myDefinedColor = a_myDefinedColor;
@@ -30,7 +35,6 @@ public class Obstacle : MonoBehaviour
 
     private void SetInstancedMaterial()
     {
-        Debug.Log("Setting instanced material");
         m_instancedMaterial = new Material(GetComponent<SpriteRenderer>().material);
         GetComponent<SpriteRenderer>().material = m_instancedMaterial;
 

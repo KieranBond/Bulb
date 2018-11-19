@@ -47,37 +47,35 @@ public class ObstacleSpawner : MonoBehaviour
     {
     }
 
-    public void UpdatePrimaryColor(Color a_newPrimaryColor)
+    public void UpdatePrimaryColor( Color a_newPrimaryColor )
     {
         //Disables colliders on each obstacle with this colour, enables on all not this colour
         List<int> removeObstacles = new List<int>();
         int n = 0;
 
-        foreach(GameObject obstacle in m_obstaclesActive)
+        foreach (GameObject obstacle in m_obstaclesActive)
         {
-            if(obstacle == null)
+            if (obstacle != null)
             {
-                removeObstacles.Add(n);
-                return;
-            }
+                //Maybe use a Key Value Pair instead for coloured obstacles?
+                Color thisObjColor = obstacle.GetComponent<Obstacle>().GetInformedColor();
 
-            //Maybe use a Key Value Pair instead for coloured obstacles?
-            Color thisObjColor = obstacle.GetComponent<SpriteRenderer>().material.color;
-
-            if(thisObjColor == a_newPrimaryColor)
-            {
-                obstacle.GetComponent<Collider2D>().enabled = false;
+                if (thisObjColor == a_newPrimaryColor)
+                {
+                    obstacle.GetComponent<Collider2D>().enabled = false;
+                }
+                else
+                {
+                    obstacle.GetComponent<Collider2D>().enabled = true;
+                }
             }
-            else
-            {
-                obstacle.GetComponent<Collider2D>().enabled = true;
-            }
-
+            //else 
+                //removeObstacles.Add(n);
 
             n++;
         }
 
-        foreach(int i in removeObstacles)
+        foreach (int i in removeObstacles)
         {
             m_obstaclesActive.RemoveAt(i);
         }
@@ -131,8 +129,6 @@ public class ObstacleSpawner : MonoBehaviour
         int m_colorIndex = 0;
 
         m_colorIndex = UnityEngine.Random.Range(0, m_availableColors.Length);
-        Debug.Log(m_colorIndex);
-        Debug.Log(m_availableColors[m_colorIndex]);
         return m_availableColors[m_colorIndex];
     }
 }
