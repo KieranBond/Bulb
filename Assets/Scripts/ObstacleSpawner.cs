@@ -21,9 +21,13 @@ public class ObstacleSpawner : MonoBehaviour
     private float m_environmentMovementSpeed;
 
     [SerializeField]
-    private float m_timeBetweenObstacles = 2f;
+    [Range(0.01f, 100f)]
+    private float m_minTimeBetweenObstacles = 2f;
+    [SerializeField]
+    [Range(0.02f, 100f)]
+    private float m_maxTimeBetweenObstacles = 2f;
 
-
+    private List<GameObject> m_obstaclesActive = new List<GameObject>();
 
     private int m_prefabIndex = 0;
 
@@ -31,12 +35,52 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Start()
     {
+        //Ensures valid range.
+        if (m_maxTimeBetweenObstacles < m_minTimeBetweenObstacles)
+            m_maxTimeBetweenObstacles = m_minTimeBetweenObstacles;
+
         if (m_prefabsToSpawn.Length > 0)
             BeginSpawnSession();
     }
 
     private void Update()
     {
+    }
+
+    public void UpdatePrimaryColor(Color a_newPrimaryColor)
+    {
+        //Disables colliders on each obstacle with this colour, enables on all not this colour
+        List<int> removeObstacles = new List<int>();
+        int n = 0;
+
+        foreach(GameObject obstacle in m_obstaclesActive)
+        {
+            if(obstacle == null)
+            {
+                removeObstacles.Add(n);
+                return;
+            }
+
+            //Maybe use a Key Value Pair instead for coloured obstacles?
+            Color thisObjColor = obstacle.GetComponent<SpriteRenderer>().material.color;
+
+            if(thisObjColor == a_newPrimaryColor)
+            {
+                obstacle.GetComponent<Collider2D>().enabled = false;
+            }
+            else
+            {
+                obstacle.GetComponent<Collider2D>().enabled = true;
+            }
+
+
+            n++;
+        }
+
+        foreach(int i in removeObstacles)
+        {
+            m_obstaclesActive.RemoveAt(i);
+        }
     }
 
     public GameObject Spawn()
@@ -50,6 +94,8 @@ public class ObstacleSpawner : MonoBehaviour
         ourNewObj.GetComponent<MoveLeft>().moveSpeed = m_environmentMovementSpeed;
         ourNewObj.GetComponent<Obstacle>().InformColour(GetRandomColor());
 
+        m_obstaclesActive.Add(ourNewObj);
+
         IncrementIndex();
 
         return ourNewObj;
@@ -60,7 +106,9 @@ public class ObstacleSpawner : MonoBehaviour
         //Calculating before as index gets incremented in Spawn()
         Spawn();
 
-        yield return new WaitForSeconds(m_timeBetweenObstacles);
+        float timeBetweenObstacles = UnityEngine.Random.Range(m_minTimeBetweenObstacles, m_maxTimeBetweenObstacles);
+
+        yield return new WaitForSeconds(timeBetweenObstacles);
 
         m_spawnSessionRoutine = StartCoroutine(SpawnInTime());
     }

@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private SpriteRenderer m_spriteRender;
 
-    [SerializeField]
-    private Color[] m_colorChoices;
+    public Color m_activeColor = Color.white;
 
     private int m_colorIndex = 0;
 
@@ -59,9 +58,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D( Collision2D collision )
     {
-        Debug.Log("Layer: " + collision.gameObject.layer.ToString());
-        Debug.Log("MyLayer: " + m_floorLayer);
-
         if (collision.gameObject.layer == LayerMask.NameToLayer(m_floorLayer))
         {
             m_isLanded = true;

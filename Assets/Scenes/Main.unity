@@ -345,9 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a56b0adfd1e81459fcfa5f4af4df93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_colorChoices:
-  - {r: 1, g: 0, b: 0.19215688, a: 1}
-  - {r: 0, g: 1, b: 0.103140354, a: 1}
+  m_activeColor: {r: 1, g: 1, b: 1, a: 1}
   m_floorLayer: Floor
   m_movementSpeed: 10
   m_jumpForce: 600
@@ -735,6 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1770732359}
   - component: {fileID: 1770732360}
+  - component: {fileID: 1770732361}
   m_Layer: 0
   m_Name: Object Spawner
   m_TagString: Untagged
@@ -775,7 +774,23 @@ MonoBehaviour:
   - {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
   m_environmentMovementSpeed: 3
-  m_timeBetweenObstacles: 3
+  m_minTimeBetweenObstacles: 1
+  m_maxTimeBetweenObstacles: 5
+--- !u!114 &1770732361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770732358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd4fb1c1a799f649b8d8cadb0a4fe48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_setMaterial: {fileID: 2100000, guid: 83ad376594c5cfa4384a72fafcb76c5e, type: 2}
+  m_changeableColours:
+  - {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2014489013
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +799,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2014489014}
-  - component: {fileID: 2014489015}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -812,18 +826,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2014489015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2014489013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd4fb1c1a799f649b8d8cadb0a4fe48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_setMaterial: {fileID: 2100000, guid: 83ad376594c5cfa4384a72fafcb76c5e, type: 2}
-  m_changeableColours:
-  - {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
-  - {r: 0, g: 0, b: 0, a: 1}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(ObstacleSpawner))]//so we can update the obstacles to turn off collision
 public class ColourFlipper : MonoBehaviour
 {
     [SerializeField]
@@ -11,10 +12,14 @@ public class ColourFlipper : MonoBehaviour
     private int m_colorIndex = 0;
 
 
+    private ObstacleSpawner m_obstacleSpawns;
+
     // Use this for initialization
     void Start()
     {
         m_setMaterial.color = m_changeableColours[0];
+
+        m_obstacleSpawns = GetComponent<ObstacleSpawner>();
     }
 
     void Update()
@@ -30,7 +35,10 @@ public class ColourFlipper : MonoBehaviour
         //TODO : Lerp color?
 
         //Change the color and update our index.
+
         m_setMaterial.color = m_changeableColours[m_colorIndex];
+        m_obstacleSpawns.UpdatePrimaryColor(m_changeableColours[m_colorIndex]);
+
         IncrementIndex();
     }
 

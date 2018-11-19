@@ -48,7 +48,6 @@ public class SpawnOnPosition : MonoBehaviour
     {
         //Calculating before as index gets incremented in Spawn()
         float timeToWait = (int)(m_prefabsXSizes[m_prefabIndex] / m_environmentMovementSpeed);
-        Debug.Log("Time to wait: " + timeToWait);
 
         Spawn();
 
