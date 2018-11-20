@@ -27,9 +27,12 @@ public class ObstacleSpawner : MonoBehaviour
     [Range(0.02f, 100f)]
     private float m_maxTimeBetweenObstacles = 2f;
 
+    [SerializeField]
     private List<GameObject> m_obstaclesActive = new List<GameObject>();
 
     private int m_prefabIndex = 0;
+
+    private Color m_activeColor;
 
     private Coroutine m_spawnSessionRoutine;
 
@@ -43,41 +46,45 @@ public class ObstacleSpawner : MonoBehaviour
             BeginSpawnSession();
     }
 
-    private void Update()
-    {
-    }
-
     public void UpdatePrimaryColor( Color a_newPrimaryColor )
     {
-        //Disables colliders on each obstacle with this colour, enables on all not this colour
-        List<int> removeObstacles = new List<int>();
-        int n = 0;
+        //Updates our active colour
+        m_activeColor = a_newPrimaryColor;
+
+        //Updates colliders
+        UpdateObjectColliders();
+    }
+
+    private void UpdateObjectCollider(GameObject a_obstacleGO)
+    {
+        //Early out
+        if (m_activeColor == null)
+            return;
+
+
+        //Maybe use a Key Value Pair instead for coloured obstacles?
+        Color thisObjColor = a_obstacleGO.GetComponent<Obstacle>().GetInformedColor();
+
+        if (thisObjColor == m_activeColor)
+        {
+            a_obstacleGO.GetComponent<Collider2D>().enabled = false;
+        }
+        else
+        {
+            a_obstacleGO.GetComponent<Collider2D>().enabled = true;
+        }
+    }
+
+    private void UpdateObjectColliders()
+    {
+        //Disables colliders on each obstacle with our active colour, enables on all not this colour
 
         foreach (GameObject obstacle in m_obstaclesActive)
         {
             if (obstacle != null)
             {
-                //Maybe use a Key Value Pair instead for coloured obstacles?
-                Color thisObjColor = obstacle.GetComponent<Obstacle>().GetInformedColor();
-
-                if (thisObjColor == a_newPrimaryColor)
-                {
-                    obstacle.GetComponent<Collider2D>().enabled = false;
-                }
-                else
-                {
-                    obstacle.GetComponent<Collider2D>().enabled = true;
-                }
+                UpdateObjectCollider(obstacle);               
             }
-            //else 
-                //removeObstacles.Add(n);
-
-            n++;
-        }
-
-        foreach (int i in removeObstacles)
-        {
-            m_obstaclesActive.RemoveAt(i);
         }
     }
 
@@ -91,8 +98,10 @@ public class ObstacleSpawner : MonoBehaviour
         GameObject ourNewObj = Instantiate(chosenPrefab, chosenSpawnPosition, chosenPrefab.transform.rotation, parent);
         ourNewObj.GetComponent<MoveLeft>().moveSpeed = m_environmentMovementSpeed;
         ourNewObj.GetComponent<Obstacle>().InformColour(GetRandomColor());
+        UpdateObjectCollider(ourNewObj);
 
         m_obstaclesActive.Add(ourNewObj);
+
 
         IncrementIndex();
 

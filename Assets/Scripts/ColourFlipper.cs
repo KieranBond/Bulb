@@ -17,14 +17,15 @@ public class ColourFlipper : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        m_setMaterial.color = m_changeableColours[0];
+        //m_setMaterial.color = m_changeableColours[0];
 
         m_obstacleSpawns = GetComponent<ObstacleSpawner>();
+        m_obstacleSpawns.UpdatePrimaryColor(m_setMaterial.color);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetMouseButtonDown(0))
         {
             UpdateColor();
         }
