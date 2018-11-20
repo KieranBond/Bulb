@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour
     private float m_jumpForce = 10f;
 
 
-    private float m_mouseYPos = 0f;
+    private float m_mouseYFirstPress = 0f;
+    private float m_mouseYPressEnd = 0f;
     private float m_mouseYMovement = 0f;
 
     private bool m_isLanded = true;
@@ -38,8 +39,6 @@ public class PlayerController : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_spriteRender = GetComponent<SpriteRenderer>();
         m_colorFlipper = GetComponent<ColourFlipper>();
-
-        m_mouseYPos = Input.mousePosition.y;
     }
 
     // Update is called once per frame
@@ -52,18 +51,27 @@ public class PlayerController : MonoBehaviour
         //Used to check colour flip rather than compare Y move again.
         bool jumped = false;
 
-        //Compare this frames mouse pos to previous.
-        float mouseYMove = 0f;
-        float previousMouseY = m_mouseYPos;
-
-        m_mouseYPos = Input.mousePosition.y;
-        mouseYMove = previousMouseY - m_mouseYPos;
-
-        if(Input.GetMouseButton(0))
+        
+        if(Input.touches.Length > 0)
         {
             //Player is pushing down.
             //Let's add to the movement
-            m_mouseYMovement -= mouseYMove;
+
+            if (Input.touches.Length > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    m_mouseYFirstPress = touch.position.y;
+                }
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    m_mouseYPressEnd = touch.position.y;
+
+                    m_mouseYMovement = m_mouseYPressEnd - m_mouseYFirstPress;
+                }
+            }
         }
 
         if (m_isLanded && (Input.GetKeyDown(KeyCode.Space) || (m_mouseYMovement >= m_mouseYMoveForJump && Input.GetMouseButtonUp(0))) )
