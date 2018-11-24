@@ -3,7 +3,7 @@
 public class ColourFlipper : MonoBehaviour
 {
     [SerializeField]
-    private ObstacleSpawner m_obstacleSpawns;
+    private ObstacleSpawner[] m_obstacleSpawns;
 
     [SerializeField]
     private Material m_setMaterial;
@@ -18,7 +18,8 @@ public class ColourFlipper : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        m_obstacleSpawns.UpdatePrimaryColor(m_setMaterial.color);
+        foreach(ObstacleSpawner spawner in m_obstacleSpawns)
+            spawner.UpdatePrimaryColor(m_setMaterial.color);
 
     }
 
@@ -34,7 +35,9 @@ public class ColourFlipper : MonoBehaviour
         //Change the color and update our index.
 
         m_setMaterial.color = m_changeableColours[m_colorIndex];
-        m_obstacleSpawns.UpdatePrimaryColor(m_changeableColours[m_colorIndex]);
+
+        foreach (ObstacleSpawner spawner in m_obstacleSpawns)
+            spawner.UpdatePrimaryColor(m_changeableColours[m_colorIndex]);
 
         IncrementIndex();
     }

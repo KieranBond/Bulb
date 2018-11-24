@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class GameOver : MonoBehaviour
 
             //Destroy the GO.
             Destroy(collision.gameObject);
+
+            //Do whatever normally.
+
+            //For now, we're just gunna restart!
+            SceneManager.LoadScene(0);
         }
     }
 }

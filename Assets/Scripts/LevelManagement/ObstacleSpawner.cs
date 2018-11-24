@@ -92,8 +92,11 @@ public class ObstacleSpawner : MonoBehaviour
     {
         Transform parent = m_spawnParent != null ? m_spawnParent : this.transform;
 
-        GameObject chosenPrefab = m_prefabsToSpawn[m_prefabIndex];
-        Vector3 chosenSpawnPosition = m_spawnPositions[m_prefabIndex].position;
+        int prefabRandomIndex = GetRandomInt(0, m_prefabsToSpawn.Length);
+        int spawnPositionRandomIndex = GetRandomInt(0, m_spawnPositions.Length);
+
+        GameObject chosenPrefab = m_prefabsToSpawn[prefabRandomIndex];
+        Vector3 chosenSpawnPosition = m_spawnPositions[spawnPositionRandomIndex].position;
 
         GameObject ourNewObj = Instantiate(chosenPrefab, chosenSpawnPosition, chosenPrefab.transform.rotation, parent);
         ourNewObj.GetComponent<MoveLeft>().moveSpeed = m_environmentMovementSpeed;
@@ -131,6 +134,14 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (m_prefabIndex >= m_prefabsToSpawn.Length)
             m_prefabIndex = 0;
+    }
+
+    /// <summary>
+    /// lower = inclusive, upper = exclusive
+    /// </summary>
+    private int GetRandomInt( int lower, int upper)
+    {
+        return UnityEngine.Random.Range(lower, upper);
     }
 
     private Color GetRandomColor()
