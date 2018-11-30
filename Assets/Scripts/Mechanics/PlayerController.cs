@@ -4,10 +4,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(ColourFlipper))]
 public class PlayerController : MonoBehaviour
 {
     private SpriteRenderer m_spriteRender;
+    private Animator m_animator;
     private Rigidbody2D m_rb;
     private ColourFlipper m_colorFlipper;
 
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private int m_colorIndex = 0;
 
     [SerializeField]
-    private string m_floorLayer;
+    private string m_landableLayer;
 
     [SerializeField]
     private float m_mouseYMoveForJump = 2f;
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_spriteRender = GetComponent<SpriteRenderer>();
         m_colorFlipper = GetComponent<ColourFlipper>();
+
+        m_animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -84,6 +88,11 @@ public class PlayerController : MonoBehaviour
             
             //Jump!
             m_rb.AddForce(Vector2.up * m_jumpForce);
+
+            m_animator.ResetTrigger("Run");
+            m_animator.SetTrigger("Jump");
+
+
         }
 
         //Colour flipping controls
@@ -108,11 +117,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D( Collision2D collision )
+    private void CheckForLandable(int collisionLayer)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(m_floorLayer))
+        if (collisionLayer == LayerMask.NameToLayer(m_landableLayer))
         {
             m_isLanded = true;
+
+            m_animator.ResetTrigger("Jump");
+            m_animator.SetTrigger("Run");
         }
+    }
+
+    private void OnCollisionEnter2D( Collision2D collision )
+    {
+        CheckForLandable(collision.gameObject.layer);
+    }
+
+    private void OnTriggerEnter2D( Collider2D collision )
+    {
+        CheckForLandable(collision.gameObject.layer);
     }
 }

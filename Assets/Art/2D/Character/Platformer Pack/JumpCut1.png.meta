@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: d133aeb40b8efaa45b205109cea43656
+guid: dfcf3cb844256594a9c1e750a7fc156c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: RunCut1_0
-    21300002: RunCut1_1
-    21300004: RunCut1_2
-    21300006: RunCut1_3
-    21300008: RunCut1_4
-    21300010: RunCut1_5
+    21300000: JumpCut1_0
+    21300002: JumpCut1_1
+    21300004: JumpCut1_2
+    21300006: JumpCut1_3
+    21300008: JumpCut1_4
+    21300010: JumpCut1_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -101,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RunCut1_0
+      name: JumpCut1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,13 +115,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d15c22a8b1aa9a4abd7faf55797cb39
+      spriteID: 9bdb2870bdaf1dc46a0612ca337867b9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunCut1_1
+      name: JumpCut1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -135,13 +135,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfad0a4c057452e45ba1a4f13963b7ad
+      spriteID: 7a2bc22d41ed07146bba78a875b2231e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunCut1_2
+      name: JumpCut1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -155,13 +155,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6488fa7c2dd3ad044b2505651e8b8310
+      spriteID: 4d1bdc3dad6799944ba92fc8c2c0b812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunCut1_3
+      name: JumpCut1_3
       rect:
         serializedVersion: 2
         x: 96
@@ -175,13 +175,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4bbdddcff2cd1148b75aefe8487778e
+      spriteID: 19e044e1aa643ad4aabdee82cb74e150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunCut1_4
+      name: JumpCut1_4
       rect:
         serializedVersion: 2
         x: 128
@@ -195,13 +195,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77cd2253796c68640813554c6bd909c3
+      spriteID: 55959021c4a8a2445b00c1c80e1f96d7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunCut1_5
+      name: JumpCut1_5
       rect:
         serializedVersion: 2
         x: 160
@@ -215,7 +215,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b824d302384eca4a863d0f181e2868a
+      spriteID: 5658460bee0fe724486d1418c5ed8fbe
       vertices: []
       indices: 
       edges: []
@@ -223,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1cd46a1fc84418f46b163c077e0a952b
+    spriteID: 8015ffa12745ca4449c7dedee10941a2
     vertices: []
     indices: 
     edges: []

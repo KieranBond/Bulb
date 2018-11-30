@@ -43,7 +43,7 @@ public class ObstacleSpawner : MonoBehaviour
             m_maxTimeBetweenObstacles = m_minTimeBetweenObstacles;
 
         if (m_prefabsToSpawn.Length > 0)
-            BeginSpawnSession();
+            StartCoroutine(BeginSpawnSession());
     }
 
     public void UpdatePrimaryColor( Color a_newPrimaryColor )
@@ -58,20 +58,27 @@ public class ObstacleSpawner : MonoBehaviour
     private void UpdateObjectCollider(GameObject a_obstacleGO)
     {
         //Early out
-        if (m_activeColor == null)
+        if (m_activeColor == null || a_obstacleGO.GetComponent<Obstacle>() == null)
             return;
 
 
         //Maybe use a Key Value Pair instead for coloured obstacles?
         Color thisObjColor = a_obstacleGO.GetComponent<Obstacle>().GetInformedColor();
+        Collider2D[] colliders = a_obstacleGO.GetComponentsInChildren<Collider2D>();
 
         if (thisObjColor == m_activeColor)
         {
-            a_obstacleGO.GetComponent<Collider2D>().enabled = false;
+            foreach(Collider2D current in colliders)
+            {
+                current.enabled = false;
+            }
         }
         else
         {
-            a_obstacleGO.GetComponent<Collider2D>().enabled = true;
+            foreach (Collider2D current in colliders)
+            {
+                current.enabled = true;
+            }
         }
     }
 
@@ -100,7 +107,11 @@ public class ObstacleSpawner : MonoBehaviour
 
         GameObject ourNewObj = Instantiate(chosenPrefab, chosenSpawnPosition, chosenPrefab.transform.rotation, parent);
         ourNewObj.GetComponent<MoveLeft>().moveSpeed = m_environmentMovementSpeed;
-        ourNewObj.GetComponent<Obstacle>().InformColour(GetRandomColor());
+
+        //Some obstacles don't use colour flip, so got to check for it.
+        if (ourNewObj.GetComponent<Obstacle>())
+            ourNewObj.GetComponent<Obstacle>().InformColour(GetRandomColor());
+
         UpdateObjectCollider(ourNewObj);
 
         m_obstaclesActive.Add(ourNewObj);
@@ -123,8 +134,11 @@ public class ObstacleSpawner : MonoBehaviour
         m_spawnSessionRoutine = StartCoroutine(SpawnInTime());
     }
 
-    private void BeginSpawnSession()
+    private IEnumerator BeginSpawnSession()
     {
+        float randomStartTimer = UnityEngine.Random.Range(m_minTimeBetweenObstacles, m_maxTimeBetweenObstacles);
+        yield return new WaitForSeconds(randomStartTimer);
+
         m_spawnSessionRoutine = StartCoroutine(SpawnInTime());
     }
 

@@ -158,6 +158,7 @@ MonoBehaviour:
   - {fileID: 65869254}
   m_prefabsToSpawn:
   - {fileID: 1166514652666014, guid: e50342120aba87f44829f8087126f06e, type: 2}
+  - {fileID: 1899844301939350, guid: e5f6bdf4801a8a34e8e99f75e0cbf0ed, type: 2}
   m_availableColors:
   - {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   - {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
@@ -411,6 +412,7 @@ GameObject:
   - component: {fileID: 546592087}
   - component: {fileID: 546592086}
   - component: {fileID: 546592089}
+  - component: {fileID: 546592090}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -489,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_activeColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
-  m_floorLayer: Floor
+  m_landableLayer: Floor
   m_mouseYMoveForJump: 5
   m_movementSpeed: 10
   m_jumpForce: 600
@@ -556,6 +558,24 @@ MonoBehaviour:
   m_changeableColours:
   - {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   - {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+--- !u!95 &546592090
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546592083}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db293aefc555fd64892bd08772788681, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &648713324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1149,7 @@ MonoBehaviour:
   - {fileID: 1564218792}
   m_prefabsToSpawn:
   - {fileID: 1166514652666014, guid: e50342120aba87f44829f8087126f06e, type: 2}
+  - {fileID: 1899844301939350, guid: e5f6bdf4801a8a34e8e99f75e0cbf0ed, type: 2}
   m_availableColors:
   - {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   - {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}

@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: d133aeb40b8efaa45b205109cea43656
+guid: 94a6e5ce3bfb615409739cb4bb31f6a1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: RunCut1_0
-    21300002: RunCut1_1
-    21300004: RunCut1_2
-    21300006: RunCut1_3
-    21300008: RunCut1_4
-    21300010: RunCut1_5
+    21300000: JumpCut2_0
+    21300002: JumpCut2_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -101,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RunCut1_0
+      name: JumpCut2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,13 +111,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d15c22a8b1aa9a4abd7faf55797cb39
+      spriteID: 082ca82807d33d449a1e8f6094f552d2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunCut1_1
+      name: JumpCut2_1
       rect:
         serializedVersion: 2
         x: 32
@@ -135,87 +131,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfad0a4c057452e45ba1a4f13963b7ad
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunCut1_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6488fa7c2dd3ad044b2505651e8b8310
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunCut1_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4bbdddcff2cd1148b75aefe8487778e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunCut1_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77cd2253796c68640813554c6bd909c3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunCut1_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b824d302384eca4a863d0f181e2868a
+      spriteID: d5ef430d9eec12e41a7cd28ca566522b
       vertices: []
       indices: 
       edges: []
@@ -223,7 +139,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1cd46a1fc84418f46b163c077e0a952b
+    spriteID: 316dbf8e09e457b44aaa85a15bb6b0a7
     vertices: []
     indices: 
     edges: []
