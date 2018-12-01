@@ -6,6 +6,11 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField]
+    private ObstacleSpawner m_otherSpawner;
+
+    public GameObject m_previousSpawnPrefab;
+
+    [SerializeField]
     private Transform m_spawnParent;
 
     [SerializeField]
@@ -102,7 +107,19 @@ public class ObstacleSpawner : MonoBehaviour
         int prefabRandomIndex = GetRandomInt(0, m_prefabsToSpawn.Length);
         int spawnPositionRandomIndex = GetRandomInt(0, m_spawnPositions.Length);
 
+        //This should hopefully stop us spawning two yellows?
+        if (m_prefabsToSpawn[prefabRandomIndex].GetComponent<Obstacle>() == null)//Yellows don't have the obstacle component
+        {
+            //Now see if the other spawner previously spawned a yellow
+            if ((m_otherSpawner.m_previousSpawnPrefab) && m_otherSpawner.m_previousSpawnPrefab == m_prefabsToSpawn[prefabRandomIndex])
+            {
+                return Spawn();
+            }
+        }
+
         GameObject chosenPrefab = m_prefabsToSpawn[prefabRandomIndex];
+        m_previousSpawnPrefab = chosenPrefab;
+
         Vector3 chosenSpawnPosition = m_spawnPositions[spawnPositionRandomIndex].position;
 
         GameObject ourNewObj = Instantiate(chosenPrefab, chosenSpawnPosition, chosenPrefab.transform.rotation, parent);
