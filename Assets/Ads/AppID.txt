@@ -1,0 +1,3 @@
+ca-app-pub-1491870061355227~4596988898 - App ID
+
+ca-app-pub-1491870061355227/7231848956 - Ad Unit ID (Interstitial)

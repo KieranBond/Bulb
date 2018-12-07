@@ -1,5 +1,6 @@
 Player Character - https://assetstore.unity.com/packages/2d/characters/platformer-animation-pack-37075
 Simple UI - https://assetstore.unity.com/packages/2d/gui/icons/simple-ui-103969
+DoTween - https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676
 
 Fonts:
 
